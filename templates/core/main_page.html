@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Main Page{% endblock %}
+{% block head %}
+    <script type="text/javascript" src="{% static "js/sheet.js" %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="row mt-4">
+        <a class="ml-auto btn btn-outline-danger py-1" href="{% url 'core:sheet_add' %}">Add</a>
+    </div>
+    <div class="row mx-auto mt-2">
+        <table id="company-list" class="table table-hover border">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" class="w-25">企業</th>
+                <th scope="col" class="w-25">Main Domain</th>
+                <th scope="col" class="w-50">Sub Domain</th>
+                <th scope="col" class="w-25"></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>company_list('{% url "api:get_sheet_list" %}')</script>
+{% endblock %}

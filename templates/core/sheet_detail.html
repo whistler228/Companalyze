@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ sheet.name }}{% endblock %}
+{% block content %}
+    <div>
+        <div class="row">
+            <div>
+                <div class="row d-flex flex-column">
+                    <div>
+                        <p class="my-0">{{ sheet.main_domain }}</p>
+                    </div>
+                    <div>
+                        {% for sb in sub_domain %}
+                            <span>{{ sb.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>{{ sheet.name }}</h2>
+                </div>
+            </div>
+            <div class="ml-auto mt-auto">
+                <a class="btn btn-outline-info" href="{% url 'core:sheet_edit' sheet.company_id %}">Edit</a>
+                <a class="btn btn-outline-danger" href="">Delete</a>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-bordered mt-1">
+                <tbody>
+                <tr>
+                    <th class="w-25">Founded Year</th>
+                    <td class="w-25">{{ sheet.founded_year }}</td>
+                    <th class="w-25">Capital</th>
+                    <td class="w-25">{{ sheet.capital }}</td>
+                </tr>
+                <tr>
+                    <th>Revenue</th>
+                    <td>{{ sheet.revenue }}</td>
+                    <th>Employee</th>
+                    <td>{{ sheet.employee }}</td>
+                </tr>
+                <tr>
+                    <th>Place</th>
+                    <td>{% for p in sheet.prefectures.all %}{{ p.name }} {% endfor %}</td>
+                    <th>Working time</th>
+                    <td>{{ sheet.working_time_start }} ~ {{ sheet.working_time_end }}</td>
+                </tr>
+                <tr>
+                    <th>Salary</th>
+                    <td colspan="3">{{ sheet.salary }}</td>
+                </tr>
+                <tr>
+                    <th>Benefits</th>
+                    <td colspan="3">{{ sheet.benefit }}</td>
+                </tr>
+                <tr>
+                    <th>Motto</th>
+                    <td colspan="3">{{ sheet.motto }}</td>
+                </tr>
+                <tr>
+                    <th>Business</th>
+                    <td colspan="3">{{ sheet.business }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
