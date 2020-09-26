@@ -23,6 +23,10 @@ html, body {height: 100%}
 footer {
     flex-shrink: unset;
 }
+.btn-sm {
+    padding-top: 0;
+    padding-bottom: 0;
+}
 
 
 /* Darkmode */

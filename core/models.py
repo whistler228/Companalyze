@@ -17,11 +17,11 @@ class Company(models.Model):
     grad_hire_last_year = models.CharField(max_length=100, null=True)
     prefectures = models.ManyToManyField("Prefecture", related_name="companies")
     offices = models.CharField(max_length=1000, null=True)
-    working_time = models.CharField(max_length=100, null=True)
+    working_time = models.CharField(max_length=300, null=True)
     salary = models.CharField(max_length=100, null=True)
-    benefit = models.CharField(max_length=1000, null=True)
-    motto = models.CharField(max_length=1000, null=True)
-    business = models.CharField(max_length=1000, null=True)
+    benefit = models.CharField(max_length=2000, null=True)
+    motto = models.CharField(max_length=2000, null=True)
+    business = models.CharField(max_length=2000, null=True)
 
     def __str__(self):
         return self.name
@@ -60,6 +60,9 @@ class CompanySheet(models.Model):
 
     interested = models.CharField(max_length=1000, blank=True)
     impression = models.CharField(max_length=1000, blank=True)
+
+    note = models.CharField(max_length=2000, blank=True)
+    is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

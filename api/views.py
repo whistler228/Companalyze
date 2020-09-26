@@ -19,7 +19,6 @@ def get_sheet_list(request):
     res = []
     for c in user.created_sheet.all():
         res.append(c.to_dict())
-    print(res)
     return JsonResponse({"status": True, "company": res})
 
 
@@ -73,7 +72,6 @@ def get_company_data(request):
 def add_sheet(request):
     user = get_object_or_404(CustomUser, username=request.user.username)
     data = request.POST
-    print(data)
     name = data.get("name")
     company_id = data.get("company_id")
     main_domain = MainDomain.objects.get_or_create(name=data.get("main_domain"))[0]
@@ -89,6 +87,7 @@ def add_sheet(request):
     benefit = data.get("benefit")
     motto = data.get("motto")
     business = data.get("business")
+    note = data.get("note")
 
     sheet, _ = CompanySheet.objects.update_or_create(
         company_id=company_id,
@@ -106,6 +105,7 @@ def add_sheet(request):
             "benefit": benefit,
             "motto": motto,
             "business": business,
+            "note": note,
         }
     )
     [sheet.sub_domain.add(x.id) for x in sub_domain]
@@ -113,3 +113,19 @@ def add_sheet(request):
     sheet.save()
 
     return JsonResponse({"status": True})
+
+
+@login_required
+def toggle_favorite(request):
+    company_id = request.GET.get("companyId")
+    if not company_id:
+        return JsonResponse({"status": False})
+
+    user = get_object_or_404(CustomUser, username=request.user.username)
+    try:
+        sheet = user.created_sheet.get(company_id=company_id)
+    except CompanySheet.DoesNotExist:
+        return JsonResponse({"status": False})
+    sheet.is_favorite = not sheet.is_favorite
+    sheet.save()
+    return JsonResponse({"status": True, "data": sheet.is_favorite})
