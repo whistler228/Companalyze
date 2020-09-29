@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
@@ -112,7 +112,7 @@ def add_sheet(request):
     [sheet.prefectures.add(x.id) for x in offices]
     sheet.save()
 
-    return JsonResponse({"status": True})
+    return redirect("core:main")  # JsonResponse({"status": True})
 
 
 @login_required

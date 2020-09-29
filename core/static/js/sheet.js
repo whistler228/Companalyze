@@ -1,4 +1,4 @@
-FAVORITE_COLOR = "bg-info"
+FAVORITE_COLOR = "favorite"
 function company_list(url) {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);

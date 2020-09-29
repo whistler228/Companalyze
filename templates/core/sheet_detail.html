@@ -20,6 +20,7 @@
                 </div>
             </div>
             <div class="ml-auto mt-auto">
+                <a class="btn btn-outline-success" href="https://job.rikunabi.com/2022/company/{{ sheet.company_id }}" target="_blank">リクナビ</a>
                 <a class="btn btn-outline-info" href="{% url 'core:sheet_edit' sheet.company_id %}">Edit</a>
                 <a class="btn btn-outline-danger" href="">Delete</a>
             </div>
@@ -30,14 +31,14 @@
                 <tr>
                     <th class="w-25">Founded Year</th>
                     <td class="w-25">{{ sheet.founded_year }}</td>
-                    <th class="w-25">Capital</th>
-                    <td class="w-25">{{ sheet.capital }}</td>
-                </tr>
-                <tr>
-                    <th>Revenue</th>
-                    <td>{{ sheet.revenue }}</td>
                     <th>Employee</th>
                     <td>{{ sheet.employee }}</td>
+                </tr>
+                <tr>
+                    <th class="w-25">Capital</th>
+                    <td class="w-25">{{ sheet.capital }}</td>
+                    <th>Revenue</th>
+                    <td>{{ sheet.revenue }}</td>
                 </tr>
                 <tr>
                     <th>Place</th>
@@ -60,6 +61,16 @@
                 <tr>
                     <th>Business</th>
                     <td colspan="3">{{ sheet.business }}</td>
+                </tr>
+                <tr>
+                    <th>Strength</th>
+                    <td>{{ sheet.strength }}</td>
+                    <th>Weakness</th>
+                    <td>{{ sheet.weakness }}</td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td colspan="3">{{ sheet.note }}</td>
                 </tr>
                 </tbody>
             </table>

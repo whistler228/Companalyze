@@ -26,6 +26,11 @@ footer {
 .btn-sm {
     padding-top: 0;
     padding-bottom: 0;
+}.table-hover tbody tr.favorite {
+    background: #ffeae2;
+}
+.table-hover tbody tr.favorite:hover {
+    background: #e8d2c9;
 }
 
 
