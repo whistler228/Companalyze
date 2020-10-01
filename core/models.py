@@ -39,6 +39,7 @@ class CompanySheet(models.Model):
     name = models.CharField(max_length=120)
     main_domain = models.ForeignKey("MainDomain", on_delete=models.CASCADE, related_name="cs_main_domain")
     sub_domain = models.ManyToManyField("SubDomain", related_name="cs_sub_domain")
+    company_url = models.CharField(max_length=120, null=True)
     prefectures = models.ManyToManyField("Prefecture", related_name="cs_companies")
     year_founded = models.DateField(null=True)
     capital = models.IntegerField(null=True)

@@ -74,6 +74,7 @@ def add_sheet(request):
     data = request.POST
     name = data.get("name")
     company_id = data.get("company_id")
+    company_url = data.get("url")
     main_domain = MainDomain.objects.get_or_create(name=data.get("main_domain"))[0]
     sub_domain = [SubDomain.objects.get_or_create(name=x)[0] for x in data.getlist("sub_domain")]
     year_founded = data.get("year_founded") + "-01" if data.get("year_founded") else None
@@ -94,6 +95,7 @@ def add_sheet(request):
         created_by=user,
         defaults={
             "name": name,
+            "company_url": company_url,
             "main_domain": main_domain,
             "year_founded": year_founded,
             "employee": employee,

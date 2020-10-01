@@ -25,11 +25,6 @@
         <form action="{% url 'api:add_sheet' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="addInputCompanyName">Company Name</label>
-                <input id="addInputCompanyName" type="text" class="form-control" placeholder="Company Name" name="name"
-                       value="{{ sheet.name }}">
-            </div>
-            <div class="form-group">
                 <label for="addInputCompanyID">Company ID</label>
                 <div class="input-group">
                     <input id="addInputCompanyID" type="text" class="form-control" placeholder="Company ID"
@@ -40,6 +35,15 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="addInputCompanyName">Company Name</label>
+                <input id="addInputCompanyName" type="text" class="form-control" placeholder="Company Name" name="name"
+                       value="{{ sheet.name }}">
+            </div>
+            <div class="form-group">
+                <label for="addInputCompanyURL">Company Website</label>
+                <input id="addInputCompanyURL" type="text" class="form-control" placeholder="Company URL" name="url">
             </div>
             <div class="form-row">
                 <div class="form-group col">
@@ -171,7 +175,7 @@
             <div class="form-group">
                 <label for="addInputNote">Note</label>
                 <textarea class="form-control" id="addInputNote" rows="3" placeholder="Note"
-                          name="business">{{ sheet.note }}</textarea>
+                          name="note">{{ sheet.note }}</textarea>
             </div>
             <button type="submit" class="btn btn-info">Submit</button>
         </form>

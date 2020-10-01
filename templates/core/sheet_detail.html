@@ -20,6 +20,9 @@
                 </div>
             </div>
             <div class="ml-auto mt-auto">
+                {% if sheet.company_url %}
+                    <a class="btn btn-outline-success" href="{{ sheet.company_url }}" target="_blank">会社サイト</a>
+                {% endif %}
                 <a class="btn btn-outline-success" href="https://job.rikunabi.com/2022/company/{{ sheet.company_id }}" target="_blank">リクナビ</a>
                 <a class="btn btn-outline-info" href="{% url 'core:sheet_edit' sheet.company_id %}">Edit</a>
                 <a class="btn btn-outline-danger" href="">Delete</a>
