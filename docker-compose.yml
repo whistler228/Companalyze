@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  syukatsu:
+    build: .
+    command: >
+      bash -c "python3 manage.py makemigrations &&
+      python3 manage.py migrate &&
+      python3 manage.py runserver 0.0.0.0:8001"
+    env_file:
+      - secrets.env
+    environment:
+      - "DJANGO_SECRET_KEY"
+      - "VIRTUAL_HOST=companalyze.dplab.biz"
+      - "VIRTUAL_PORT=8001"
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8001"
+    expose:
+      - 8001
+    depends_on:
+      - postgres_syukatsu
+
+  postgres_syukatsu:
+    image: library/postgres:latest
+
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+    ports:
+      - "5433:5432"
+    env_file:
+      - secrets.env
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    external:
+      name: projects_default
