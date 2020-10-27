@@ -1,5 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Syukatsu{% endblock %}
+{% load static %}
+{% block title %}Companalyze{% endblock %}
 {% block content %}
-
+<div class="container">
+    <div class="top-image border rounded border-right">
+        <img class="w-100" src="{% static 'images/Header.jpg' %}" alt="">
+    </div>
+    <div class="mt-3 text-center">
+        <a class="btn btn-info text-white mx-2" href="account/signup">Register</a>
+        <a class="btn btn-info text-white mx-2" href="account/login">Login</a>
+    </div>
+    <div class="text-center mt-5">
+        <p>
+            企業研究サポートサイト<br>
+            企業の特徴や強み、自分に合っているかなどなど分析するときに使ってください
+        </p>
+        <p>
+            リクナビの企業ID(URLの末尾r○○○○)を入力すると自動で企業情報が入力されます。
+        </p>
+    </div>
+</div>
 {% endblock %}
